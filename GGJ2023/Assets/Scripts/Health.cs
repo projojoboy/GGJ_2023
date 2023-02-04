@@ -1,25 +1,46 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int health = 3;
+    private int maxHealth = 3;
+    [SerializeField]
+    private int curHealth = 0;
+
+    [SerializeField]
+    private Image healthbar = null;
 
     [SerializeField]
     private UnityEvent OnDeath = new UnityEvent();
 
+    private void Start()
+    {
+        curHealth = maxHealth;
+    }
+
     public void TakeDamage(int dmg)
     {
-        health -= dmg;
+        curHealth -= dmg;
+        UpdateUI();
 
-        if (health <= 0)
+        if (curHealth <= 0)
             Dead();
+    }
+
+    private void UpdateUI()
+    {
+        healthbar.fillAmount = 1f / (float)maxHealth * (float)curHealth;
     }
 
     public void HealHealth(int hp)
     {
-        health += hp;
+        if (curHealth >= maxHealth)
+            return; 
+
+        curHealth += hp;
+        UpdateUI();
     }
 
     private void Dead()
