@@ -7,14 +7,9 @@ public class punch : MonoBehaviour
     public GameObject punchpreFab;
 
     public Transform player;
-
-    private float spread;
     
     void Update()
     {
-        
-        
-
         if (Input.GetMouseButtonUp(0))
         {
             var dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.position;
@@ -22,9 +17,7 @@ public class punch : MonoBehaviour
 
             GameObject punch = Instantiate(punchpreFab, player.position, Quaternion.AngleAxis(angle, Vector3.forward));
             punch.transform.position += punch.transform.right * 1.2f;
-
+            punch.transform.parent = this.transform;
         }
-       
-
     }
 }
