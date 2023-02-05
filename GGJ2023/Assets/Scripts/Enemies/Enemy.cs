@@ -55,9 +55,6 @@ public class Enemy : MonoBehaviour
         UpdateTurretScan();
 
         _agent.SetDestination(_target.position);
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            GetComponent<Health>().TakeDamage(10000);
     }
 
     private void UpdateWiggleRotation()

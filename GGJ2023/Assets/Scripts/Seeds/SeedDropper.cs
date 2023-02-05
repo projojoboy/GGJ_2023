@@ -6,11 +6,15 @@ public class SeedDropper : MonoBehaviour
     public int maxAmount = 4;
     public float minSpeed = 0.3f;
     public float maxSpeed = 2;
+    public float dropRate = 20;
 
     public GameObject seedPrefab;
 
     public void DropSeeds()
     {
+        if (Random.Range(0, 101) <= dropRate)
+            return;
+
         int seedAmount = Random.Range(minAmount, maxAmount + 1);
 
         for (int i = 0; i < seedAmount; i++)
