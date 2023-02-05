@@ -6,36 +6,42 @@ public class TurretPlaceMent : MonoBehaviour
 {
     public GameObject turretprefab;
 
-    public Transform player;
-
     public GameObject water;
 
     public float plantTime = 1f;
 
-    public float seedsAmount = 2f;
+    public int seedsAmount = 50;
+
+    private int turretCost = 50;
+
+    private bool canPlant = true;
+
     public void Update()
     {
-
-        if (seedsAmount > 0)
+        if (Input.GetKey(KeyCode.E))
         {
+            if (seedsAmount < turretCost || !canPlant)
+                return;
 
-            if (Input.GetKey(KeyCode.E))
-            {
-                water.SetActive(true);
-                if (plantTime < 0)
-                {
-                    plantTime = 1;
-                    var dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - player.position;
-                    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            canPlant = false;
 
-                    GameObject punch = Instantiate(turretprefab, player.position, Quaternion.AngleAxis(angle, Vector3.forward));
-                    punch.transform.position += punch.transform.right * 1f;
-                    seedsAmount -= 1;
-                    water.SetActive(false);
-                }
-                plantTime -= Time.deltaTime;
-            }
+            StartCoroutine(PlantSeed());
         }
+    }
 
+    private IEnumerator PlantSeed()
+    {
+        water.SetActive(true);
+
+        // Disable player movement
+
+        yield return new WaitForSeconds(plantTime);
+
+        Instantiate(turretprefab, transform.position + transform.right, Quaternion.identity);
+
+        seedsAmount -= turretCost;
+        
+        water.SetActive(false);
+        canPlant = true;
     }
 }
