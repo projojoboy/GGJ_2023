@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurretPlacement : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class TurretPlacement : MonoBehaviour
     private movement move = null;
     private punch punch = null;
 
+    public Text text;
+
     private void Awake()
     {
         move = GetComponent<movement>();
@@ -28,6 +31,7 @@ public class TurretPlacement : MonoBehaviour
 
     private void Update()
     {
+        text.text = seedsAmount.ToString();
         if (Input.GetKey(KeyCode.E))
         {
             if (seedsAmount < turretCost || !canPlant)
