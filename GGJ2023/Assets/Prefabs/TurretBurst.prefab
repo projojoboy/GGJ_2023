@@ -341,7 +341,8 @@ GameObject:
   - component: {fileID: 3583020698031756212}
   - component: {fileID: 3583020698031756211}
   - component: {fileID: 3583020698031756210}
-  - component: {fileID: 3583020698031756209}
+  - component: {fileID: 1508899079}
+  - component: {fileID: 1508899080}
   m_Layer: 0
   m_Name: TurretBurst
   m_TagString: Turret
@@ -458,7 +459,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3583020698031756209
+--- !u!114 &1508899079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -467,12 +468,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 3583020698031756208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ec89fd7d7249e4e9c31fa1b7e0e645, type: 3}
+  m_Script: {fileID: 11500000, guid: 22ed9f6f40af319439cb5b01570fa37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expReq: 20
-  expCur: 0
-  expBar: {fileID: 3583020696616185396}
+--- !u!95 &1508899080
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3583020698031756208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 64feabb7862932f4883801d5048278f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3583020698321343693
 GameObject:
   m_ObjectHideFlags: 0

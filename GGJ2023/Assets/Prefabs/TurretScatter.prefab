@@ -221,7 +221,8 @@ GameObject:
   - component: {fileID: 5801146084707762799}
   - component: {fileID: 5801146084707762784}
   - component: {fileID: 5801146084707762785}
-  - component: {fileID: 5801146084707762786}
+  - component: {fileID: 1285586004}
+  - component: {fileID: 1285586003}
   m_Layer: 0
   m_Name: TurretScatter
   m_TagString: Turret
@@ -338,7 +339,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5801146084707762786
+--- !u!114 &1285586004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,12 +348,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 5801146084707762787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26ec89fd7d7249e4e9c31fa1b7e0e645, type: 3}
+  m_Script: {fileID: 11500000, guid: 22ed9f6f40af319439cb5b01570fa37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expReq: 20
-  expCur: 0
-  expBar: {fileID: 5801146083375837845}
+--- !u!95 &1285586003
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801146084707762787}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8d4538b978000444ca35b08d8a43d78a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &5801146084917796490
 GameObject:
   m_ObjectHideFlags: 0
