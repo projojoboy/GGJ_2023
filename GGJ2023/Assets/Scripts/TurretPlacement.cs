@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class TurretPlaceMent : MonoBehaviour
+public class TurretPlacement : MonoBehaviour
 {
     public GameObject turretprefab;
 
