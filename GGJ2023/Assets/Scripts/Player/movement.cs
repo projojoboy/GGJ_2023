@@ -19,6 +19,13 @@ public class movement : MonoBehaviour
 
         rb.velocity = move;
         animator.SetFloat("speed", Mathf.Abs(x+y));
-        
+        if(x > 0)
+        {
+            gameObject.transform.localScale = new Vector3(5, 5, 1);
+        }
+        if (x < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-5, 5, 1);
+        }
     }
 }
