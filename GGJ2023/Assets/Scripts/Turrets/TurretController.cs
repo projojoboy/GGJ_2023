@@ -61,12 +61,12 @@ public class TurretController : MonoBehaviour
         {
             case WeaponType.single:
                 bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
-                bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+                bul.GetComponent<Rigidbody2D>().velocity = bul.transform.right * bulletSpeed;
                 break;
 
             case WeaponType.burst:
                 bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
-                bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+                bul.GetComponent<Rigidbody2D>().velocity = bul.transform.right * bulletSpeed;
 
                 if (burstTime <= 2)
                 {
@@ -82,7 +82,7 @@ public class TurretController : MonoBehaviour
                 for (int i = 0; i < 5; i++)
                 {
                     bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
-                    bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+                    bul.GetComponent<Rigidbody2D>().velocity = bul.transform.right * bulletSpeed;
                 }
                 break;
         }
