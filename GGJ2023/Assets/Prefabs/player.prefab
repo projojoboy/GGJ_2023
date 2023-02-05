@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 867698157}
   m_Layer: 8
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,6 +307,7 @@ MonoBehaviour:
   water: {fileID: 5648229528029756338}
   plantTime: 1
   seedsAmount: 50
+  text: {fileID: 0}
 --- !u!61 &721784949
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -381,7 +382,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 1
 --- !u!114 &867698157
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Turret
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - Enemy
   - Attack
   - Player
-  - 
-  - 
+  - Turret
+  - PostProcessing
   - 
   - 
   - 

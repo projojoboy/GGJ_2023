@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5801146084707762785}
   - component: {fileID: 1285586004}
   - component: {fileID: 1285586003}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: TurretScatter
   m_TagString: Turret
   m_Icon: {fileID: 0}

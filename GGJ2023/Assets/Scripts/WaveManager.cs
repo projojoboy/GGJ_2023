@@ -61,14 +61,14 @@ public class WaveManager : MonoBehaviour
             case 5:
 
                 SpawnEnemy(1, 1);
-                SpawnEnemy(1, 4);
+                SpawnEnemy(2, 4);
 
                 break;
 
             case 6:
 
                 SpawnEnemy(1, 2);
-                SpawnEnemy(1, 8);
+                SpawnEnemy(2, 8);
 
                 break;
 
@@ -132,6 +132,13 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
+        if (
+            _spawnEnemyAmount <= 0 &&
+            _spawnEnemy2Amount <= 0 &&
+            enemies.Count <= 0
+        )
+            NextWave();
+
         if (_spawnDelayTimer > 0)
         {
             _spawnDelayTimer -= Time.deltaTime;
@@ -177,13 +184,6 @@ public class WaveManager : MonoBehaviour
 
             _spawnDelayTimer = spawnDelayTime;
         }
-
-        if (
-            _spawnEnemyAmount <= 0 &&
-            _spawnEnemy2Amount <= 0 &&
-            enemies.Count <= 0
-        )
-            NextWave();
     }
 
     private void InstantiateEnemy(GameObject enemyPrefab, Vector3 spawnPosition)

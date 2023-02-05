@@ -4,13 +4,21 @@ using UnityEngine;
 public class EnemyPunch : MonoBehaviour
 {
     public float range;
+    public float punchDelayTime = 1;
     public GameObject punchPrefab;
 
     private Enemy _enemy;
 
+    private float _punchDelayTimer;
+
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
+    }
+
+    private void Start()
+    {
+        _punchDelayTimer = punchDelayTime;
     }
 
     private void Update()
@@ -18,10 +26,17 @@ public class EnemyPunch : MonoBehaviour
         if (!_enemy.Target)
             return;
 
-        UpdateMeleeAttack();
+        if (_punchDelayTimer > 0)
+            _punchDelayTimer -= Time.deltaTime;
+        else
+        {
+            InstantiateMeleeAttack();
+
+            _punchDelayTimer = punchDelayTime;
+        }
     }
 
-    private void UpdateMeleeAttack()
+    private void InstantiateMeleeAttack()
     {
         if (Vector3.Distance(transform.position, _enemy.Target.position) > range)
             return;

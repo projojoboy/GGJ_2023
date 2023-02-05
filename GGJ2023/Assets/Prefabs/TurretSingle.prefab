@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 3714748256068005134}
   - component: {fileID: 3714748256068005135}
   - component: {fileID: 3714748256068005128}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: TurretSingle
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ Transform:
   - {fileID: 3714748254639116396}
   - {fileID: 3714748256009883030}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3714748256068005139
 SpriteRenderer:

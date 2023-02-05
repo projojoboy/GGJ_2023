@@ -6,7 +6,7 @@ public class SeedDropper : MonoBehaviour
     public int maxAmount = 4;
     public float minSpeed = 0.3f;
     public float maxSpeed = 2;
-    public float dropRate = 20;
+    public float dropRate = 40;
 
     public GameObject seedPrefab;
 

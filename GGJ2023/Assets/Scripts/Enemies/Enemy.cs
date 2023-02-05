@@ -73,11 +73,13 @@ public class Enemy : MonoBehaviour
     {
         Collider2D[] turretColliders = Physics2D.OverlapCircleAll(transform.position, range, turretMask);
 
-        if (turretColliders.Length > 0)
-        {
-            if (_target.CompareTag("Player"))
-                SetTarget(1);
-        }
+        if (turretColliders.Length <= 0)
+            return;
+
+        if (!_target.CompareTag("Player"))
+            return;
+
+        SetTarget(1);
     }
 
     private void SetTarget(int target)
@@ -97,7 +99,7 @@ public class Enemy : MonoBehaviour
                 _target = FindClosestTurret(GameObject.FindGameObjectsWithTag("Turret")).transform;
 
                 if (!_target)
-                    SetTarget(1);
+                    SetTarget(0);
 
                 break;
         }

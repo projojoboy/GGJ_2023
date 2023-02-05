@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 3583020698031756210}
   - component: {fileID: 1508899079}
   - component: {fileID: 1508899080}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: TurretBurst
   m_TagString: Turret
   m_Icon: {fileID: 0}

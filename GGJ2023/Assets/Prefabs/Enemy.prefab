@@ -121,7 +121,7 @@ Transform:
   - {fileID: 2219248774545677406}
   - {fileID: 3269845868872555432}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2219248774717329976
 MonoBehaviour:
@@ -140,7 +140,7 @@ MonoBehaviour:
   turretWateringRange: 2.62
   turretMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 512
 --- !u!114 &2219248774717329977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 0.8
-  punchPrefab: {fileID: 6754348380089156169, guid: eacd0a824fce1994b882495b0a2c691e, type: 3}
+  punchPrefab: {fileID: 6754348380089156169, guid: 06ee9b1771ed85243a8c8aaed905d6b7, type: 3}
 --- !u!114 &2219248774717329978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,11 +221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e970707f3abb5442afdd245fbb7f97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAmount: 2
-  maxAmount: 4
+  minAmount: 4
+  maxAmount: 8
   minSpeed: 0.3
   maxSpeed: 2
-  dropRate: 20
+  dropRate: 40
   seedPrefab: {fileID: 3667551547030373275, guid: e798b628ab4ebac48bc7f48f10a9333c, type: 3}
 --- !u!195 &2219248774717329991
 NavMeshAgent:
