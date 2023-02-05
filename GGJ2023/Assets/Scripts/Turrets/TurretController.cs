@@ -1,3 +1,4 @@
+using Mono.Cecil.Rocks;
 using System.Collections;
 using UnityEngine;
 
@@ -28,6 +29,13 @@ public class TurretController : MonoBehaviour
     private float timeToFire = 0;
     private int burstTime = 1;
 
+    private TurretAnimator turAnim = null;
+
+    private void Awake()
+    {
+        turAnim = GetComponent<TurretAnimator>();
+    }
+
     void Update()
     {
         FindClosestEnemy();
@@ -41,6 +49,8 @@ public class TurretController : MonoBehaviour
 
         if (Time.time < timeToFire)
             return;
+
+        turAnim.SetAnimation("attack");
 
         var dir = closestEnemy.transform.position - shootPoint.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -87,6 +97,7 @@ public class TurretController : MonoBehaviour
         if (enemies.Length <= 0)
         {
             closestEnemy = null;
+            turAnim.SetAnimation("idle");
             return;
         }
 
