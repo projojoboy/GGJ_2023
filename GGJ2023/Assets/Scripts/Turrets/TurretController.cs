@@ -1,3 +1,5 @@
+using Mono.Cecil.Rocks;
+using System.Collections;
 using UnityEngine;
 
 public class TurretController : MonoBehaviour
@@ -14,6 +16,8 @@ public class TurretController : MonoBehaviour
     [SerializeField]
     private float fireRate = 1;
     [SerializeField]
+    private WeaponType weaponType = WeaponType.single;
+    [SerializeField]
     private float spread = .2f;
     [SerializeField]
     private Transform shootPoint = null;
@@ -23,6 +27,14 @@ public class TurretController : MonoBehaviour
     private GameObject closestEnemy = null;
 
     private float timeToFire = 0;
+    private int burstTime = 1;
+
+    private TurretAnimator turAnim = null;
+
+    private void Awake()
+    {
+        turAnim = GetComponent<TurretAnimator>();
+    }
 
     void Update()
     {
@@ -38,11 +50,42 @@ public class TurretController : MonoBehaviour
         if (Time.time < timeToFire)
             return;
 
+        turAnim.SetAnimation("attack");
+
         var dir = closestEnemy.transform.position - shootPoint.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        GameObject bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
-        bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+        GameObject bul;
+
+        switch (weaponType)
+        {
+            case WeaponType.single:
+                bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
+                bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+                break;
+
+            case WeaponType.burst:
+                bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
+                bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+
+                if (burstTime <= 2)
+                {
+                    timeToFire = Time.time + .1f;
+                    burstTime++;
+                    return;
+                }
+
+                burstTime = 1;
+                break;
+
+                case WeaponType.scatter:
+                for (int i = 0; i < 5; i++)
+                {
+                    bul = Instantiate(bullet, shootPoint.position, Quaternion.AngleAxis(angle + Random.Range(-spread, spread), Vector3.forward));
+                    bul.GetComponent<Rigidbody>().velocity = bul.transform.right * bulletSpeed;
+                }
+                break;
+        }
 
         timeToFire = Time.time + 1 / fireRate;
     }
@@ -54,6 +97,7 @@ public class TurretController : MonoBehaviour
         if (enemies.Length <= 0)
         {
             closestEnemy = null;
+            turAnim.SetAnimation("idle");
             return;
         }
 
@@ -75,4 +119,6 @@ public class TurretController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
+
+    private enum WeaponType { single, burst, scatter }
 }
