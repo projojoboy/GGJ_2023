@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     private NavMeshAgent _agent;
 
+    public Transform Target { get => _target; set => _target = value; }
     private Transform _target;
 
     private void Awake()
@@ -34,6 +35,9 @@ public class Enemy : MonoBehaviour
         UpdateTurretScan();
 
         _agent.SetDestination(_target.position);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            GetComponent<Health>().TakeDamage(10000);
     }
 
     private void UpdateWiggleRotation()
