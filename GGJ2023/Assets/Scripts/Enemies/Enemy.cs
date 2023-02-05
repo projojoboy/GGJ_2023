@@ -32,6 +32,11 @@ public class Enemy : MonoBehaviour
         turretExpController.AddExp(1, enemyType);
     }
 
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();

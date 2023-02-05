@@ -121,7 +121,7 @@ Transform:
   - {fileID: 2219248774545677406}
   - {fileID: 3269845868872555432}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2219248774717329976
 MonoBehaviour:
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3988baed0203614798e93be288c9909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  curHealth: 10
+  maxHealth: 25
+  curHealth: 25
   healthbar: {fileID: 3269845869597113391}
   OnDeath:
     m_PersistentCalls:
@@ -197,10 +197,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 2219248774717329988}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2219248774717329976}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -225,6 +225,7 @@ MonoBehaviour:
   maxAmount: 4
   minSpeed: 0.3
   maxSpeed: 2
+  dropRate: 20
   seedPrefab: {fileID: 3667551547030373275, guid: e798b628ab4ebac48bc7f48f10a9333c, type: 3}
 --- !u!195 &2219248774717329991
 NavMeshAgent:

@@ -113,10 +113,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 7619226064923576420}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7619226064923576344}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -141,6 +141,7 @@ MonoBehaviour:
   maxAmount: 4
   minSpeed: 0.3
   maxSpeed: 2
+  dropRate: 20
   seedPrefab: {fileID: 3667551547030373275, guid: e798b628ab4ebac48bc7f48f10a9333c, type: 3}
 --- !u!195 &7619226064923576423
 NavMeshAgent:

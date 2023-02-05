@@ -12,8 +12,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     private Image healthbar = null;
 
-    [SerializeField]
-    private UnityEvent OnDeath = new UnityEvent();
+    public UnityEvent OnDeath = new UnityEvent();
 
     private void Start()
     {

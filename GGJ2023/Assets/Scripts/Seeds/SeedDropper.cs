@@ -12,7 +12,7 @@ public class SeedDropper : MonoBehaviour
 
     public void DropSeeds()
     {
-        if (Random.Range(0, 101) <= dropRate)
+        if (Random.Range(0, 101) > dropRate)
             return;
 
         int seedAmount = Random.Range(minAmount, maxAmount + 1);
