@@ -9,16 +9,22 @@ public class movement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
+    private bool canMove = true;
+
     void FixedUpdate()
     {
+        animator.SetFloat("speed", rb.velocity.magnitude);
+
+        if (!canMove)
+            return;
+
         float x = Input.GetAxis("Horizontal");
-        float y= Input.GetAxis("Vertical");
-        
+        float y = Input.GetAxis("Vertical");
         
         Vector2 move = new Vector2(x, y) * speed;
 
         rb.velocity = move;
-        animator.SetFloat("speed", Mathf.Abs(x+y));
+        
         if(x > 0)
         {
             gameObject.transform.localScale = new Vector3(5, 5, 1);
@@ -28,4 +34,7 @@ public class movement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(-5, 5, 1);
         }
     }
+
+    public void DisableMovement() { canMove = false; rb.velocity = Vector3.zero; }
+    public void EnableMovement() { canMove = true; }
 }

@@ -15,4 +15,13 @@ public class damageScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            collision.GetComponent<Health>().TakeDamage(1);
+            Destroy(this.gameObject);
+        }
+    }
 }
