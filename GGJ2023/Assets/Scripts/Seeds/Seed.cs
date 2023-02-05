@@ -6,7 +6,7 @@ public class Seed : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<TurretPlaceMent>().AddSeeds(1);
+            other.GetComponent<TurretPlacement>().AddSeeds(1);
             Destroy(gameObject);
         }
     }
