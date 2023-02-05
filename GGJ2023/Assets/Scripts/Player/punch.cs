@@ -19,7 +19,7 @@ public class punch : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonDown(0))
         {
             hammer.SetActive(true);
             move.DisableMovement();
