@@ -29,7 +29,7 @@ public class TurretExpController : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.O))
             AddExp(1, 2);
     }
-    private void AddExp(int exp, int enemy)
+    public void AddExp(int exp, int enemy)
     {
         UpdateUI();
 

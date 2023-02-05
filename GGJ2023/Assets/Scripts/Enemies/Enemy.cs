@@ -4,13 +4,33 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
+    public int enemyType = 1;
     public float range;
+    public float turretWateringRange;
     public LayerMask turretMask;
 
     private NavMeshAgent _agent;
 
     public Transform Target { get => _target; set => _target = value; }
     private Transform _target;
+
+    public void WaterClosestTurret()
+    {
+        GameObject turret = FindClosestTurret(GameObject.FindGameObjectsWithTag("Turret"));
+
+        if (!turret)
+            return;
+
+        if (Vector3.Distance(transform.position, turret.transform.position) > turretWateringRange)
+            return;
+
+        TurretExpController turretExpController = turret.GetComponent<TurretExpController>();
+
+        if (!turretExpController)
+            return;
+
+        turretExpController.AddExp(1, enemyType);
+    }
 
     private void Awake()
     {
@@ -108,5 +128,8 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, range);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, turretWateringRange);
     }
 }
