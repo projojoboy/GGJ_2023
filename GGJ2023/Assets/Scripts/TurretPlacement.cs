@@ -11,7 +11,7 @@ public class TurretPlacement : MonoBehaviour
 
     public float plantTime = 1f;
 
-    public int seedsAmount = 50;
+    public int seedsAmount = 40;
 
     private int turretCost = 50;
 
@@ -26,7 +26,7 @@ public class TurretPlacement : MonoBehaviour
         punch = GetComponent<punch>();
     }
 
-    public void Update()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.E))
         {
@@ -37,6 +37,11 @@ public class TurretPlacement : MonoBehaviour
 
             StartCoroutine(PlantSeed());
         }
+    }
+
+    public void AddSeeds(int amount)
+    {
+        seedsAmount += amount;
     }
 
     private IEnumerator PlantSeed()
