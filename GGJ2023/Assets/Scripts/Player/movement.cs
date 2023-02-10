@@ -35,6 +35,18 @@ public class movement : MonoBehaviour
         }
     }
 
+    public void Flip(bool flip)
+    {
+        if (flip)
+        {
+            gameObject.transform.localScale = new Vector3(5, 5, 1);
+        }
+        if (!flip)
+        {
+            gameObject.transform.localScale = new Vector3(-5, 5, 1);
+        }
+    }
+
     public void DisableMovement() { canMove = false; rb.velocity = Vector3.zero; }
     public void EnableMovement() { canMove = true; }
 }

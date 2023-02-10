@@ -6,6 +6,7 @@ public class WaveManager : MonoBehaviour
 {
     public int CurrentWave { get; private set; }
 
+    public int startingWave = 1;
     public float spawnDelayTime = 1;
 
     public List<GameObject> enemies;
@@ -98,10 +99,16 @@ public class WaveManager : MonoBehaviour
 
                 break;
 
+            case 11:
+
+                SpawnEnemy(2, 30);
+
+                break;
+
             default:
 
-                SpawnEnemy(1, 8);
-                SpawnEnemy(2, 17);
+                SpawnEnemy(1, Mathf.RoundToInt((CurrentWave - 7) * 1.1f));
+                SpawnEnemy(2, Mathf.RoundToInt((CurrentWave - 5) * 1.5f));
 
                 break;
         }
@@ -127,6 +134,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        CurrentWave = startingWave - 1;
         NextWave();
     }
 
@@ -192,7 +200,7 @@ public class WaveManager : MonoBehaviour
 
         enemies.Add(enemyObject);
 
-        enemyObject.GetComponent<Health>().OnDeath.AddListener(delegate { OnEnemyDeath(enemyObject); });
+        enemyObject.GetComponent<Health>().OnDeath.AddListener(delegate { OnEnemyDeath(enemyObject); Debug.Log(enemyObject + " Died"); });
     }
 
     private void OnEnemyDeath(GameObject enemy)

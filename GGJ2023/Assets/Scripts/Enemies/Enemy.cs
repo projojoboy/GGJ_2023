@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
     public int enemyType = 1;
     public float range;
     public float turretWateringRange;
+    public int wateringXP = 1;
     public LayerMask turretMask;
 
     private NavMeshAgent _agent;
@@ -29,7 +31,7 @@ public class Enemy : MonoBehaviour
         if (!turretExpController)
             return;
 
-        turretExpController.AddExp(1, enemyType);
+        turretExpController.AddExp(wateringXP, enemyType);
     }
 
     public void Kill()
@@ -47,7 +49,7 @@ public class Enemy : MonoBehaviour
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
 
-        int randomTarget = Random.Range(0, 1);
+        int randomTarget = UnityEngine.Random.Range(0, 2);
 
         SetTarget(randomTarget);
 
@@ -59,7 +61,16 @@ public class Enemy : MonoBehaviour
         UpdateWiggleRotation();
         UpdateTurretScan();
 
-        _agent.SetDestination(_target.position);
+        try
+        {
+            _agent.SetDestination(_target.position);
+        }
+        catch (Exception)
+        {
+            int randomTarget = UnityEngine.Random.Range(0, 2);
+
+            SetTarget(randomTarget);
+        }
     }
 
     private void UpdateWiggleRotation()
@@ -96,10 +107,15 @@ public class Enemy : MonoBehaviour
             // Closest Turret
             case 1:
 
-                _target = FindClosestTurret(GameObject.FindGameObjectsWithTag("Turret")).transform;
+                GameObject targetObject = FindClosestTurret(GameObject.FindGameObjectsWithTag("Turret"));
 
-                if (!_target)
+                if (!targetObject)
+                {
                     SetTarget(0);
+                    break;
+                }
+
+                _target = targetObject.transform;
 
                 break;
         }

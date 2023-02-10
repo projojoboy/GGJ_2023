@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class damageScript : MonoBehaviour
 {
     public float attackTimer = 1f;
+
+    public Vector2 direction;
 
     // Update is called once per frame
     void Update()
@@ -20,8 +23,13 @@ public class damageScript : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         {
-            collision.GetComponent<Health>().TakeDamage(1);
-            Destroy(this.gameObject);
+            collision.GetComponent<Health>().TakeDamage(5);
+            collision.GetComponent<Rigidbody2D>().AddForce(direction.normalized * 8, ForceMode2D.Impulse);
+
+            Collider2D collider = GetComponent<Collider2D>();
+
+            if (collider)
+                collider.enabled = false;
         }
     }
 }

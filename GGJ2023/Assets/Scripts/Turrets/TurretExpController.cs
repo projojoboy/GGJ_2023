@@ -17,28 +17,43 @@ public class TurretExpController : MonoBehaviour
     private Image expBar = null;
 
     [SerializeField]
+    private SpriteRenderer enemySpriteRenderer;
+
+    [SerializeField]
+    private Sprite enemy1Sprite;
+
+    [SerializeField]
+    private Sprite enemy2Sprite;
+
+    [SerializeField]
+    private SpriteRenderer upgradePlantSpriteRenderer;
+
+    [SerializeField]
+    private Sprite upgradePlant1Sprite;
+
+    [SerializeField]
+    private Sprite upgradePlant2Sprite;
+
+    [SerializeField]
     private GameObject turUpgrade1 = null;
     [SerializeField]
     private GameObject turUpgrade2 = null;
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-            AddExp(1, 1);
-        else if(Input.GetKeyDown(KeyCode.O))
-            AddExp(1, 2);
-    }
     public void AddExp(int exp, int enemy)
     {
-        UpdateUI();
-
         if (enemy == 1)
             expEn1 += exp;
         else
             expEn2 += exp;
 
+        // Update sprites
+        enemySpriteRenderer.sprite = (expEn1 > expEn2) ? enemy1Sprite : enemy2Sprite;
+
+        upgradePlantSpriteRenderer.sprite = (expEn1 > expEn2) ? upgradePlant1Sprite : upgradePlant2Sprite;
+
         expCur = expEn1 + expEn2;
+
+        UpdateUI();
 
         if (expCur >= expReq)
         {

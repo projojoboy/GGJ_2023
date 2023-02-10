@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Enemy))]
 public class EnemyPunch : MonoBehaviour
@@ -26,14 +28,23 @@ public class EnemyPunch : MonoBehaviour
         if (!_enemy.Target)
             return;
 
+        if (Vector3.Distance(transform.position, _enemy.Target.position) <= range * 0.66)
+            GetComponent<NavMeshAgent>().SetDestination(transform.position);
+
         if (_punchDelayTimer > 0)
-            _punchDelayTimer -= Time.deltaTime;
+        {
+            if (Vector3.Distance(transform.position, _enemy.Target.position) <= range)
+                _punchDelayTimer -= Time.deltaTime;
+        }
         else
         {
             InstantiateMeleeAttack();
 
             _punchDelayTimer = punchDelayTime;
         }
+
+        if (Vector3.Distance(transform.position, _enemy.Target.position) > range)
+            _punchDelayTimer = punchDelayTime;
     }
 
     private void InstantiateMeleeAttack()
@@ -45,6 +56,7 @@ public class EnemyPunch : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         GameObject punchObject = Instantiate(punchPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward), transform);
+        punchObject.GetComponent<EnemyDamage>().direction = direction;
         punchObject.transform.position += punchObject.transform.right * 1.2f;
     }
 

@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     private int maxHealth = 3;
     [SerializeField]
     private int curHealth = 0;
+    [SerializeField]
+    private bool destroyOnDeath = false;
 
     [SerializeField]
     private Image healthbar = null;
@@ -45,5 +47,8 @@ public class Health : MonoBehaviour
     private void Dead()
     {
         OnDeath?.Invoke();
+
+        if (destroyOnDeath)
+            Destroy(gameObject);
     }
 }

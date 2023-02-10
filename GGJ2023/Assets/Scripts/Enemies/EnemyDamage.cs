@@ -6,6 +6,8 @@ public class EnemyDamage : MonoBehaviour
 {
     public float attackTimer = 1f;
 
+    public Vector2 direction;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +23,11 @@ public class EnemyDamage : MonoBehaviour
         if(collision.CompareTag("Player") || collision.CompareTag("Turret"))
         {
             collision.GetComponent<Health>().TakeDamage(1);
-            Destroy(this.gameObject);
+
+            Collider2D collider = GetComponent<Collider2D>();
+
+            if (collider)
+                collider.enabled = false;
         }
     }
 }

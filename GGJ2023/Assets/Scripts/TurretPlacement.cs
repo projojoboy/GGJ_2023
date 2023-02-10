@@ -61,7 +61,7 @@ public class TurretPlacement : MonoBehaviour
 
         if(transform.localScale.x < 0) { dir.x = -dir.x; }
 
-        Instantiate(turretprefab, transform.position + dir, Quaternion.identity);
+        Instantiate(turretprefab, transform.position + dir, Quaternion.identity).SetActive(true);
 
         seedsAmount -= turretCost;
         
