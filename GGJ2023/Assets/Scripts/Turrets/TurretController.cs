@@ -1,5 +1,3 @@
-using Mono.Cecil.Rocks;
-using System.Collections;
 using UnityEngine;
 
 public class TurretController : MonoBehaviour

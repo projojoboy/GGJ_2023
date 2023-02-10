@@ -2960,7 +2960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8224763574222140510, guid: adfa359cdc905b54599cdb23ed128810, type: 3}
       propertyPath: startingWave
-      value: 11
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8224763574222140510, guid: adfa359cdc905b54599cdb23ed128810, type: 3}
       propertyPath: _spawnPoints.Array.size

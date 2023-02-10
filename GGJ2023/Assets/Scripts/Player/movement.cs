@@ -11,6 +11,12 @@ public class movement : MonoBehaviour
 
     private bool canMove = true;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+    }
+
     void FixedUpdate()
     {
         animator.SetFloat("speed", rb.velocity.magnitude);
